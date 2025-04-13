@@ -62,11 +62,15 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         else {
             Button button = findViewById(R.id.bthPause);
             button.setText("Пауза");
+
         }
     }
 
     public void onSensorChanged(SensorEvent event)
     {
+        if (!active) {
+            return;
+        }
         if (event.sensor.getType()== Sensor.TYPE_ACCELEROMETER)
         {
             float[] values = event.values;
